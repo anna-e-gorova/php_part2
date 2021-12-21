@@ -10,6 +10,26 @@ class Product{
         $this->price = $price;
         $this->images = $images;
     }
+    
+    function getTitle() {
+        return $this->title;
+    }
+    function getPrice() {
+        return $this->price;
+    }
+    function getImages() {
+        return $this->images;
+    }
+    
+    function setTitle($title) {
+        $this->title = $title;
+    }
+    function setPrice($price) {
+        $this->price = $price;
+    }
+    function setImages($images) {
+        $this->images = $images;
+    }
 
     function render() {
         echo $this->title;
