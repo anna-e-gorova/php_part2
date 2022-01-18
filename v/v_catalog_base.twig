@@ -1,0 +1,10 @@
+<h1>
+    Каталог товаров
+</h1>
+
+<div id="catGoods">
+    {% block goods %}
+		{{ list_goods | raw }}
+	{% endblock %}
+</div>
+<button onclick="viewMore()" class="shopUnit" >Показать еще</button>
