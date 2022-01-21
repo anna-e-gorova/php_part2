@@ -1,0 +1,11 @@
+<p>Корзина:</p>
+    <div id="cart">
+        {% for good in cart %}
+        <div id="cartProduct" >
+            <p>Товар: {{ good.name }}</p>
+            <p>Кол-во: {{ good.count }}</p>
+            <a onclick="delFromCart({{ good.good_id }},{{ id_user }})" href="index.php?c=Cart&act=show" class="button-primary shopUnitMore" >Удалить</a>
+        </div>
+        {% endfor %}
+    </div>
+    <a onclick="createOrder({{ id_user }})" href="#" class="button-primary shopUnitMore" >Оформить заказ</a>
