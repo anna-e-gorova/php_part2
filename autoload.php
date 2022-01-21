@@ -1,9 +1,5 @@
 <?php
-/*
-use Twig\Environment;
-use Twig\Extension\DebugExtension;
-use Twig\Loader\FilesystemLoader;
-*/
+
 require_once 'config.php';
 require_once 'lib/vendor/autoload.php';
 

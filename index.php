@@ -3,10 +3,8 @@ session_start();
 
 require_once 'autoload.php';
 
-//site.ru/index.php?act=auth&c=User
-
 $action = 'action_';
-$action .=(isset($_GET['act'])) ? $_GET['act'] : 'index';
+$action .= $_GET['act'] ?? 'index';
 
 switch ($_GET['c'])
 {
@@ -31,5 +29,4 @@ switch ($_GET['c'])
 	default:
 		$controller = new C_Catalog();
 }
-
-$controller->Request($action);
+if (php_sapi_name() != 'cli') $controller->Request($action);

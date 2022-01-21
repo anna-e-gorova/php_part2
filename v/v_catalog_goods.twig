@@ -10,6 +10,7 @@
         <div class="shopUnitPrice">
             Цена: {{ good.price }}
         </div>
+        <a id="buttonA" onclick="addToCart({{ good.id }},{{ id_user }})" class="button-primary shopUnitMore" >Добавить в корзину</a>
         <a href="index.php?c=Product&act=open&id={{ good.id }}" class="shopUnitMore">
             Подробнее
         </a>

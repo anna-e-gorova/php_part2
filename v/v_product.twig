@@ -1,10 +1,10 @@
 <div id="openedProduct-img" data-id="{{ good.id }}">
-    <img src="images/goods/big/{{ good.img }}">
+    <a href="index.php?c=Product&act=photos&id={{ good.id }}"><img src="images/goods/big/{{ good.img }}"></a>
 </div>
 <div id="openedProduct-price">
     <h1>Цена: {{ good.price }}</h1>
     </div>
-    <button onclick="addToCart({{ good.id }},{{ id_user }})" class="button-primary shopUnitMore" >Добавить в корзину</button>
+    <a id="buttonA" onclick="addToCart({{ good.id }},{{ id_user }})" class="button-primary shopUnitMore" >Добавить в корзину</a>
 <div id="openedProduct-content">
     <h1 id="openedProduct-name">
         {{ good.name }}

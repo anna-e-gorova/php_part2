@@ -6,7 +6,7 @@ class M_Order {
         return $data;
     }
 
-    private function getAllOrders() {
+    public static function getAllOrders() {
         $sql = "SELECT `order_id`, `login`, date, SUM(price*count) as totalprice, SUM(count) as totalcount FROM `orders` INNER JOIN `goodsorder` ON `orders`.`id` = `goodsorder`.`order_id` INNER JOIN `users` ON `orders`.`user_id` = `users`.`id` INNER JOIN `goods` ON `goodsorder`.`good_id` = `goods`.`id` GROUP BY order_id;";
         $data = MPDO::Select($sql);
         return $data;

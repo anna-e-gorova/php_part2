@@ -5,6 +5,7 @@ class M_User {
         $data = MPDO::getRow($sql);
         if($data){
              $_SESSION['id_user'] = $data['id'];
+             M_Cart::addFromCookie($data['id']);
              if($data['usergroup'] == 'admin'){
                 $_SESSION['admin'] = true;
             }
@@ -14,13 +15,13 @@ class M_User {
         }
     }
 
-    function pass ($name, $password) {
+    public static function pass ($name, $password) {
         return strrev(md5($name)) . md5($password);
 
     }
 
-    function getUsername(){
-        $sql = "SELECT `login` FROM `users` WHERE `id`='{$_SESSION['id_user']}'";
+    public static function getUsername($userId){
+        $sql = "SELECT `login` FROM `users` WHERE `id`='$userId'";
         $data = MPDO::getRow($sql);
         return $data['login'];
     }

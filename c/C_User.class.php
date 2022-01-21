@@ -15,9 +15,10 @@ class C_User extends C_Base
 		}
 		$this->title .= '::Авторизация';
 		$info = "Авторизируйтесь!";
-        if($_POST){
+       
+		if($_POST){
             $login =  !empty($_POST['login']) ? strip_tags($_POST['login']) : $errors .= "Поле Логин должно быть заполнено!<br>";
-			$pass =  !empty($_POST['pass']) ? md5(strip_tags($_POST['pass'])) : $errors .= "Поле Пароль должно быть заполнено!<br>";
+			$pass =  !empty($_POST['pass']) ? M_User::pass($login, strip_tags($_POST['pass'])) : $errors .= "Поле Пароль должно быть заполнено!<br>";
             if(!empty($errors)){
 				$info .= $errors;
 			} else {
@@ -38,7 +39,7 @@ class C_User extends C_Base
 		$this->title .= '::Личный кабинет';
 		if ($_SESSION) {
 			$user = new M_User();
-			$username = $user->getUsername();
+			$username = $user->getUsername($_SESSION['id_user']);
 			$info = "Hello $username";
 			$orders = M_Order::getOrders($_SESSION['id_user']);
 			$this->content = $this->twig()->render('v_lk.twig', ['text' => $info, 'orders' => $orders]);
@@ -55,7 +56,7 @@ class C_User extends C_Base
 		$info = "Введите данные для регистрации";
 		if($this->isPost()) {
 			$new_user = new M_User();
-			$reg = $new_user->regUser($_POST['name'], $_POST['login'], md5(strip_tags($_POST['pass'])));
+			$reg = $new_user->regUser(strip_tags($_POST['name']), strip_tags($_POST['login']), M_User::pass(strip_tags($_POST['login']), strip_tags($_POST['pass'])));
 			$reg ? header("Location: index.php?c=User&act=auth") : $info = "Пользователь с таким логином уже существует";
 		}
 		$this->content = $this->twig()->render('v_reg.twig', ['text' => $info]);

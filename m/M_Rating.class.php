@@ -5,8 +5,8 @@ class M_Rating {
         $res = MPDO::insert($sql);
     }
 
-    public static function getRatings() {
-        $sql="SELECT * FROM rating WHERE good_id='{$_GET['id']}'";
+    public static function getRatings($goodId) {
+        $sql="SELECT * FROM rating WHERE good_id='$goodId'";
         $data = MPDO::Select($sql);
         return $data; 
     }

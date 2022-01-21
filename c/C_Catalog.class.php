@@ -13,7 +13,7 @@ class C_Catalog extends C_Base
 		$this->title .= '::Каталог';
 		$catalog = new M_Catalog;
 		$goods = $catalog->getGoods();
-		$goodsList = $this->twig()->render('v_catalog_goods.twig', ['goods' => $goods]);
+		$goodsList = $this->twig()->render('v_catalog_goods.twig', ['goods' => $goods, 'id_user' => $_SESSION['id_user']]);
 		$this->content = $this->twig()->render('v_catalog_base.twig', ['list_goods' => $goodsList]);
 	}
 }

@@ -1,0 +1,6 @@
+<p>Корзина:</p>
+    <div id="cart">
+        {{ list_goods | raw }}
+    </div>
+    <a onclick="createOrder({{ id_user }})" href="index.php?c=User&act=lk" class="button-primary shopUnitMore" >Оформить заказ</a>
+    <a id=#buttonA onclick="cleanCart({{ id_user }})" href="" class="button-primary shopUnitMore" >Очистить корзину</a>

@@ -1,0 +1,10 @@
+{% for good in cart %}
+    <div id="cartProduct" >
+        <p>Товар: {{ good.name }}</p>
+        <p>Кол-во: {{ good.count }}</p>
+        <a id="buttonA" onclick="addToCart({{ good.good_id }},{{ id_user }})" href="index.php?c=Cart&act=show" class="button-primary shopUnitMore" >+</a>
+        <a id="buttonA" onclick="delFromCart({{ good.good_id }},{{ id_user }})" href="index.php?c=Cart&act=show" class="button-primary shopUnitMore" >-</a>
+        <p>Цена: {{ good.price }}</p>
+    </div>
+{% endfor %}
+   

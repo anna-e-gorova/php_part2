@@ -17,7 +17,7 @@ class C_Rating extends C_Base
 			header('location: index.php');
 			exit();
 		}
-		$this->content = $this->twig()->render('v_rating.twig', ['good_id' => $_GET['id']]);
+		$this->content = $this->twig()->render('v_rating.twig', ['good_id' => (int)$_GET['id']]);
 	}
 
 }

@@ -30,8 +30,8 @@ abstract class C_Base extends C_Controller
 	//	
 	public function render()
 	{	
-		$refs = ['Каталог' => 'index.php'];
-		$_SESSION ? $refs += ['Личный кабинет' => 'index.php?c=User&act=lk', 'Корзина' => 'index.php?c=Cart&act=show', 'Выйти' => 'index.php?c=User&act=exit'] : $refs += ['Войти' => 'index.php?c=User&act=auth', 'Регистрация' => 'index.php?c=User&act=reg'];
+		$refs = ['Каталог' => 'index.php', 'Корзина' => 'index.php?c=Cart&act=show'];
+		$_SESSION ? $refs += ['Личный кабинет' => 'index.php?c=User&act=lk', 'Выйти' => 'index.php?c=User&act=exit'] : $refs += ['Войти' => 'index.php?c=User&act=auth', 'Регистрация' => 'index.php?c=User&act=reg'];
 		$vars = array('title' => $this->title, 'content' => $this->content,'kw' => $this->keyWords, 'refs' => $refs);
 		$page = $this->twig()->render('v_main.twig', $vars);				
 		echo $page;
