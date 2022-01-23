@@ -1,0 +1,25 @@
+<h1>{{ text }}</h1>
+<table border='1' width='800'>
+<tr>
+	<th>№ заказа</th>
+	<th>Логин</th>
+	<th>Общая сумма заказа</th>
+	<th>Статус</th>
+	<th>Удалить</th>
+</tr>
+	{% for order in orders %}
+       <tr id="{{ order.order_id }}">
+       		<td>{{ order.order_id }}</td>
+       		<td>{{ order.login }}</td>
+       		<td>{{ order.totalprice }}</td>
+			<td><p id="orderStatus">{{ order.status }}</p>
+				<select id="selectStatus">
+					<option>обработан</option>
+					<option>выдан</option>
+					<option>оформлен</option>
+    			</select> <button onclick="changeStatusOrder({{ order.order_id }})">Изменить</button>
+			</td>
+       		<td><a href="index.php?c=Admin&act=editOrder" onclick="delOrder({{ order.order_id }})"><button>Удалить заказ</button></a></td> 
+       </tr> 
+	{% endfor %}
+</table>

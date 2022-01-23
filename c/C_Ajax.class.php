@@ -43,11 +43,39 @@ class C_Ajax
 			return M_Cart::cleanCart((int)$_POST['userId']);
 	}
 
+	public function action_galary(){
+			$files = M_Product::getGoodPhotos((int)$_POST['goodId']);
+			$photos = C_Base::twig()->render('v_photos.twig', ['files' => $files, 'good_id' => (int)$_POST['id']]);
+			echo $photos;
+	}
+
 	public function action_refreshCart(){
 			$userCart = M_Cart::getCart((int)$_POST['userId']);
 			$goodsList = C_Base::twig()->render('v_cart_goods.twig', ['cart' => $userCart, 'id_user' => $_SESSION['id_user']]);
 			echo $goodsList;		
 	}
 
+	public function action_changeStatusOrder(){
+		if ($_SESSION['admin']) {
+		$status = strip_tags($_POST['newStatus']);
+		$id = (int)($_POST['orderId']);
+		$sql = "UPDATE `orders` SET `status` = '$status' WHERE `orders`.`id` = $id";
+		return $res = MPDO::update($sql);
+		} else return false;		
+	}
+
+	public function action_delGood(){
+		$userCart = M_Cart::getCart((int)$_POST['userId']);
+		$goodsList = C_Base::twig()->render('v_cart_goods.twig', ['cart' => $userCart, 'id_user' => $_SESSION['id_user']]);
+		echo $goodsList;		
+	}
+
+	public function action_delOrder(){
+		if ($_SESSION['admin']) {
+			$orderId = (int)$_POST['orderId'];
+			$sql = "DELETE FROM `orders` WHERE `id` = '$orderId'";
+        	return $res = MPDO::delete($sql);
+		} else return false;
+	}
 
 }

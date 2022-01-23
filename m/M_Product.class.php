@@ -7,9 +7,23 @@ class M_Product {
     }
 
     public static function getGoodPhotos($goodId) {
-        $dir = "images/goods/big/$goodId/";
-        $files = scandir("$dir");
-        return $files;    
+        $dirGood = DIR_BIG_IMG . "$goodId/";
+
+        $sql = "SELECT img FROM goods WHERE `id`='$goodId'";
+        $files = MPDO::getRow($sql);
+        $files['img'] = DIR_BIG_IMG . $files['img'];
+
+        if (is_dir($dirGood)) {
+            $scan = scandir("$dirGood");
+            array_splice($scan, 0, 2);
+            for ($i=0; $i < count($scan); $i++){
+                $scan[$i] = $dirGood . $scan[$i];
+            }
+            $files = array_merge($files, $scan);
+        }
+        
+        return $files;
+    
     }
 
     public static function addToCart($goodId, $userId, $count = 1) {

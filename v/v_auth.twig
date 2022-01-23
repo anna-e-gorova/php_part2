@@ -1,6 +1,6 @@
-{{ text }}
-<h1>Войдите в систему</h1>
+<h1>{{ text }}</h1>
 <form method="post">
+    <input type="hidden" name="referer" value="{{ referer }}">
     <p>Введите логин</p>
     <input type="text" name="login">
 
@@ -9,5 +9,3 @@
 
     <input type="submit" name="auth" value="Войти">
 </form>
-<br>
-<a href='index.php?c=User&act=reg'>Регистрация</a>

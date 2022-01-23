@@ -5,23 +5,6 @@ $(document).ready(function(){
     $("#buttonA").click(function(event){
         event.preventDefault();
     });
-
-    $(".modalWindow").click(function(){
-        var img = $(this);
-      var src = img.attr('src');
-      src = src.replace("small", "big");
-      $("body").append("<div class='popup'>"+
-                       "<div class='popup_bg'></div>"+
-                       "<img src='"+src+"' class='popup_img' />"+
-                       "</div>"); 
-      $(".popup").fadeIn(800);
-      $(".popup_bg").click(function(){  
-          $(".popup").fadeOut(800);
-          setTimeout(function() {
-            $(".popup").remove();
-          }, 800);
-      });
-  });
 });
 
 function refreshCart(userId) {
@@ -30,7 +13,7 @@ function refreshCart(userId) {
         method: 'POST', 
         data: {userId: userId},
         success: function(data){
-            $("#cart").replaceWith(data);
+            $("#cart").replaceWith("<div id='cart'>"+data+"</div>");
         }
     }); 
 };
@@ -57,6 +40,34 @@ function viewMore() {
         data: {lastView: lastView},
         success: function(data){
             $("#catGoods").append(data);
+        }
+    }); 
+};
+
+function galary(goodId) {
+    $.ajax({
+        url: 'index.php?c=Ajax&act=galary',
+        method: 'POST', 
+        data: {goodId: goodId},
+        success: function(data){
+            $("body").append("<div class='popup'>"+
+            "<div class='popup_bg'></div>"+"<div class='popup_img'>"+data+"<div>"+
+            "</div>");
+            $(".modalWindow").click(function(){
+              $('.bigImg').remove();  
+              var img = $(this);
+              var src = img.attr('src');
+              src = src.replace("small", "big");
+              $(".popup_img").append("<img src='"+src+"' class='bigImg'/>");
+            }); 
+            $(".popup").fadeIn(800);
+            $(".popup_bg").click(function(){  
+                $(".popup").fadeOut(800);
+                setTimeout(function() {
+                  $(".popup").remove();
+                }, 800);
+            });
+
         }
     }); 
 };
@@ -105,4 +116,29 @@ function createOrder(userId) {
 };
 
 
+function delOrder(orderId) {
+        $.ajax({
+            url: 'index.php?c=Ajax&act=delOrder', 
+            type: 'POST', 
+            data: {orderId: orderId}, 
+            error: function (req, text, error) {
+                alert('Ошибка!' + text + ' | ' + error);
+		    }
+        });
+        alert("Заказ удален");
+};
 
+function changeStatusOrder(orderId) {
+    let newStatus = $("#"+orderId+" > td > select").val();
+    $.ajax({
+        url: 'index.php?c=Ajax&act=changeStatusOrder', 
+        type: 'POST', 
+        data: {orderId: orderId,
+            newStatus: newStatus}, 
+        error: function (req, text, error) {
+            alert('Ошибка!' + text + ' | ' + error);
+        }
+    });
+    $("#orderStatus").text(newStatus);
+    alert("Статус изменен");
+};

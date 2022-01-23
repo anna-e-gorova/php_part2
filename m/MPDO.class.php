@@ -1,12 +1,6 @@
 <?php
 class MPDO {
 
-    const DB_HOST = 'localhost';
-    const DB_NAME = 'shop';
-    const DB_USER = 'root';
-    const DB_PASS = 'root';
-    const DB_CHAR = 'utf8';
-
     protected static $instance = null;
 
     private function __construct() {
@@ -28,8 +22,8 @@ class MPDO {
                 \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
                 \PDO::ATTR_EMULATE_PREPARES => TRUE,
             );
-            $dsn = 'mysql:host=' . self::DB_HOST . ';dbname=' . self::DB_NAME . ';charset=' . self::DB_CHAR;
-            self::$instance = new \PDO($dsn, self::DB_USER, self::DB_PASS, $opt);
+            $dsn = DB_DRIVER . ':host=' . DB_SERVER . ';dbname=' . DB_NAME . ';charset=' . DB_CHAR;
+            self::$instance = new \PDO($dsn, DB_USER, DB_PASSWORD, $opt);
         }
         return self::$instance;
     }

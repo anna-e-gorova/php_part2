@@ -1,4 +1,7 @@
 <h1>{{ text }}</h1>
+{% block adminPanel %}
+	{{ adminPanel | raw }}
+{% endblock %}
 <p>Заказы:</p>
 {% for order in orders %}
     <div id="cartProduct" >
@@ -6,5 +9,6 @@
         <p>Дата: {{ order.date }}</p>
         <p>Кол-во товаров: {{ order.totalcount }}</p>
         <p>Сумма: {{ order.totalprice }}</p>
+        <p>Статус: {{ order.status }}</p>
     </div>
 {% endfor %}

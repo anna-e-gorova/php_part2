@@ -1,0 +1,26 @@
+<h1>{{ text }}</h1>
+<table border='1' width='800'>
+<tr>
+	<th>Товар</th>
+	<th>Имя пользователя</th>
+	<th>Оценка</th>
+	<th>Комментарий</th>
+	<th>Активен</th>
+	<th>Удалить</th>
+</tr>
+	{% for rating in ratings %}
+       <tr id="{{ rating.id }}">
+       		<td>{{ rating.good_name }}</td>
+       		<td>{{ rating.username }}</td>
+       		<td>{{ rating.rating }}</td>
+			<td>{{ rating.comment }}</td>
+			<td><p id="orderStatus">{{ order.status }}</p>
+				<select id="selectStatus">
+					<option>Y</option>
+					<option>N</option>
+    			</select> <button onclick="changeStatusRating({{ rating.id }})">Изменить</button>
+			</td>
+       		<td><a href="index.php?c=Admin&act=editOrder" onclick="delRating({{ rating.id }})"><button>Удалить</button></a></td> 
+       </tr> 
+	{% endfor %}
+</table>

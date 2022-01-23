@@ -14,6 +14,9 @@ switch ($_GET['c'])
 	case 'User':
 		$controller = new C_User();
 		break;
+	case 'Admin':
+		$controller = new C_Admin();
+		break;
 	case 'Product';
 		$controller = new C_Product();
 		break;

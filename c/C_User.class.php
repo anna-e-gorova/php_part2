@@ -14,20 +14,20 @@ class C_User extends C_Base
 			header("Location: index.php?c=User&act=lk");
 		}
 		$this->title .= '::Авторизация';
-		$info = "Авторизируйтесь!";
+		$info = "Войдите в систему!";
        
-		if($_POST){
-            $login =  !empty($_POST['login']) ? strip_tags($_POST['login']) : $errors .= "Поле Логин должно быть заполнено!<br>";
-			$pass =  !empty($_POST['pass']) ? M_User::pass($login, strip_tags($_POST['pass'])) : $errors .= "Поле Пароль должно быть заполнено!<br>";
+		if($this->isPost()){
+            $login =  !empty($_POST['login']) ? strip_tags($_POST['login']) : $errors .= "Поле Логин должно быть заполнено! ";
+			$pass =  !empty($_POST['pass']) ? M_User::pass($login, strip_tags($_POST['pass'])) : $errors .= "Поле Пароль должно быть заполнено! ";
             if(!empty($errors)){
-				$info .= $errors;
+				$info = $errors;
 			} else {
 			$user = new M_User();
 			$auth = $user->auth($login,$pass);
-		    $auth ? header("Location: index.php?c=User&act=lk") : $info = "Такого пользователя не существует";
+		    $auth ? header("Location: {$_POST['referer']}") : $info = "Такого пользователя не существует";
 			}
 		}
-		$this->content = $this->twig()->render('v_auth.twig', ['text' => $info]);
+		$this->content = $this->twig()->render('v_auth.twig', ['text' => $info, 'referer' => $_SERVER["HTTP_REFERER"]]);
 	}
 
 	public function action_exit(){
@@ -42,7 +42,10 @@ class C_User extends C_Base
 			$username = $user->getUsername($_SESSION['id_user']);
 			$info = "Hello $username";
 			$orders = M_Order::getOrders($_SESSION['id_user']);
-			$this->content = $this->twig()->render('v_lk.twig', ['text' => $info, 'orders' => $orders]);
+			if ($_SESSION['admin']) {
+				$adminPanel = $this->twig()->render('v_admin_panel.twig');
+			}
+			$this->content = $this->twig()->render('v_lk.twig', ['text' => $info, 'orders' => $orders, 'adminPanel' => $adminPanel]);
 		} else {
 			header("Location: index.php?c=User&act=auth");	
 		}	

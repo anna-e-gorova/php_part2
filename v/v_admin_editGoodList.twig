@@ -1,0 +1,18 @@
+<h1>{{ text }}</h1>
+
+<table align="center" border="1" width="600">
+    <tr>
+        <th>Название товара</th>
+        <th>Действие</th>
+    </tr>
+
+    {% for good in goods %}
+        <tr>
+            <td>{{ good.name }}</td>
+            <td>
+                <a href="index.php?c=Admin&act=delGood&id={{ good.id }}"><button>Удалить товар</button></a>
+                <a href="index.php?c=Admin&act=editGood&id={{ good.id }}"><button>Редактировать товар</button></a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>

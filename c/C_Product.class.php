@@ -7,7 +7,7 @@ class C_Product extends C_Base
 {
 	//
 	// Конструктор.
-	//
+	//var_dump($_SERVER["HTTP_REFERER"]);
 	
 	public function action_open(){
 		$this->title .= '::Товар';
@@ -17,10 +17,4 @@ class C_Product extends C_Base
 		$this->content = $this->twig()->render('v_product.twig', ['comments' => $comments, 'good' => $good, 'id_user' => $_SESSION['id_user']]);
 	}
 
-	public function action_photos(){
-		$this->title .= '::Фотографии товара';
-		$product = new M_Product;
-		$files = $product->getGoodPhotos((int)$_GET['id']);
-		$this->content = $this->twig()->render('v_photos.twig', ['files' => $files, 'good_id' => (int)$_GET['id']]);
-	}
 }

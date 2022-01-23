@@ -1,6 +1,6 @@
 <?php
 
-require_once 'config.php';
+require_once 'lib/config.php';
 require_once 'lib/vendor/autoload.php';
 
 spl_autoload_register('autoloadClass'); 
