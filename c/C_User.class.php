@@ -24,7 +24,7 @@ class C_User extends C_Base
 			} else {
 			$user = new M_User();
 			$auth = $user->auth($login,$pass);
-		    $auth ? header("Location: {$_POST['referer']}") : $info = "Такого пользователя не существует";
+		    $auth ? header("Location: {$_POST['referer']}") : $info = "Пользователь не существует либо заблокирован";
 			}
 		}
 		$this->content = $this->twig()->render('v_auth.twig', ['text' => $info, 'referer' => $_SERVER["HTTP_REFERER"]]);

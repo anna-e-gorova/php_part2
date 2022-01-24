@@ -115,6 +115,10 @@ header {
 	border-left: none;
 }
 
+#active {
+	text-align: center;
+}
+
 
 #content {
 	min-height: 600px;

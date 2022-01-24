@@ -13,10 +13,10 @@ class C_Admin extends C_Base
 		if (!$_SESSION['admin']) {
 			header("Location: index.php?c=User&act=lk");
 		}
-		$this->title .= '::Редактирование товаров';
-		$info = "Редактирование товаров";
+		$this->title .= '::Управление товарами';
+		$info = "Управление товарами";
        
-		$goods = M_Catalog::getGoods(0,9999);
+		$goods = M_Catalog::getAllStatusGoods(0,9999);
 		$this->content = $this->twig()->render('v_admin_editGoodList.twig', ['text' => $info, 'goods' => $goods]);
 
 	}
@@ -31,11 +31,9 @@ class C_Admin extends C_Base
 		$goodId = (int)$_GET['id'];
 		$good = M_Product::getGood($goodId);
 
-		if ($_FILES['photo']['error']) {
-			$_FILES['photo']['name'] = $_POST['oldImg'];
-		} elseif($this->isPost()) {
+		if($this->isPost()) {
 			if ($_FILES['img']['error']) {
-				$info = "Ошибка файла";
+				$_FILES['img']['name'] = strip_tags($_POST['oldImg']);
 			} elseif ($_FILES['img']['size'] > 1048576 ) {
 				$info = "Файл слишком большого размера!";
 			} elseif (exif_imagetype($_FILES['img']['tmp_name'])) {
@@ -75,7 +73,7 @@ class C_Admin extends C_Base
 				}
 			}
 			$admin = new M_Admin();
-			$res = $admin->addGood(strip_tags($_POST['name']), strip_tags($_POST['description']), strip_tags($_POST['price']), $_FILES['img']['name']);
+			$res = $admin->addGood(strip_tags($_POST['name']), strip_tags($_POST['description']), strip_tags($_POST['price']), $_FILES['img']['name'], $_POST['active']);
 			$res ? header("Location: index.php?c=Product&act=open&id=$res") : $info = "Ошибка добавления";
 		}
 		$this->content = $this->twig()->render('v_admin_addGood.twig', ['text' => $info]);	
@@ -114,4 +112,15 @@ class C_Admin extends C_Base
 		$this->content = $this->twig()->render('v_admin_editRating.twig', ['text' => $info, 'ratings' => $ratings]);
 	}
 
+	public function action_editUser(){
+		if (!$_SESSION['admin']) {
+			header("Location: index.php?c=User&act=lk");
+		}
+		$this->title .= '::Управление пользователями';
+		$info = "Управление пользователями";
+       
+		$sql = "SELECT * FROM users";
+        $users = MPDO::Select($sql);
+		$this->content = $this->twig()->render('v_admin_editUser.twig', ['text' => $info, 'users' => $users]);
+	}
 }

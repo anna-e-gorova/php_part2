@@ -14,13 +14,13 @@
        		<td>{{ rating.username }}</td>
        		<td>{{ rating.rating }}</td>
 			<td>{{ rating.comment }}</td>
-			<td><p id="orderStatus">{{ order.status }}</p>
+			<td><p id="active">{{ rating.active }}</p>
 				<select id="selectStatus">
 					<option>Y</option>
 					<option>N</option>
     			</select> <button onclick="changeStatusRating({{ rating.id }})">Изменить</button>
 			</td>
-       		<td><a href="index.php?c=Admin&act=editOrder" onclick="delRating({{ rating.id }})"><button>Удалить</button></a></td> 
+       		<td><a href="index.php?c=Admin&act=editRating" onclick="delRating({{ rating.id }})"><button>Удалить</button></a></td> 
        </tr> 
 	{% endfor %}
 </table>

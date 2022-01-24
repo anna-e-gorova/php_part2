@@ -115,7 +115,6 @@ function createOrder(userId) {
     }
 };
 
-
 function delOrder(orderId) {
         $.ajax({
             url: 'index.php?c=Ajax&act=delOrder', 
@@ -139,6 +138,91 @@ function changeStatusOrder(orderId) {
             alert('Ошибка!' + text + ' | ' + error);
         }
     });
-    $("#orderStatus").text(newStatus);
+    $("#"+orderId+" > td > #orderStatus").text(newStatus);
     alert("Статус изменен");
+};
+
+
+function delRating(ratingId) {
+    $.ajax({
+        url: 'index.php?c=Ajax&act=delRating', 
+        type: 'POST', 
+        data: {ratingId: ratingId}, 
+        error: function (req, text, error) {
+            alert('Ошибка!' + text + ' | ' + error);
+        }
+    });
+    alert("Отзыв удален");
+};
+
+function changeStatusRating(ratingId) {
+let newStatus = $("#"+ratingId+" > td > select").val();
+$.ajax({
+    url: 'index.php?c=Ajax&act=changeStatusRating', 
+    type: 'POST', 
+    data: {ratingId: ratingId,
+        newStatus: newStatus}, 
+    error: function (req, text, error) {
+        alert('Ошибка!' + text + ' | ' + error);
+    }
+});
+$("#"+ratingId+" > td > #active").text(newStatus);
+alert("Статус изменен");
+};
+
+function changeStatusGood(goodId) {
+    let newStatus = $("#"+goodId+" > td > select").val();
+    $.ajax({
+        url: 'index.php?c=Ajax&act=changeStatusGood', 
+        type: 'POST', 
+        data: {goodId: goodId,
+            newStatus: newStatus}, 
+        error: function (req, text, error) {
+            alert('Ошибка!' + text + ' | ' + error);
+        }
+    });
+    $("#"+goodId+" > td > #active").text(newStatus);
+    alert("Статус изменен");
+};
+
+function delUser(userId) {
+    $.ajax({
+        url: 'index.php?c=Ajax&act=delUser', 
+        type: 'POST', 
+        data: {userId: userId}, 
+        error: function (req, text, error) {
+            alert('Ошибка!' + text + ' | ' + error);
+        }
+    });
+    alert("Пользователь удален");
+};
+
+function changeStatusUser(userId) {
+let newStatus = $("#"+userId+" > td > #selectStatus").val();
+$.ajax({
+    url: 'index.php?c=Ajax&act=changeStatusUser', 
+    type: 'POST', 
+    data: {userId: userId,
+        newStatus: newStatus}, 
+    error: function (req, text, error) {
+        alert('Ошибка!' + text + ' | ' + error);
+    }
+});
+$("#"+userId+" > td > #active").text(newStatus);
+alert("Статус изменен");
+};
+
+function changeGroupUser(userId) {
+    let newGroup = $("#"+userId+" > td > #selectGroup").val();
+    $.ajax({
+        url: 'index.php?c=Ajax&act=changeGroupUser', 
+        type: 'POST', 
+        data: {userId: userId,
+            newGroup: newGroup}, 
+        error: function (req, text, error) {
+            alert('Ошибка!' + text + ' | ' + error);
+        }
+    });
+    $("#"+userId+" > td > #group").text(newGroup);
+    alert("Группа изменена");
 };

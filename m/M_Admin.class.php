@@ -1,8 +1,8 @@
 <?
 class M_Admin {
     
-    public static function addGood($name,$info,$price,$img) {
-        $sql = "insert into goods(name,description,price,img) value('$name','$info',$price,'$img')";
+    public static function addGood($name,$info,$price,$img,$active) {
+        $sql = "insert into goods(name,description,price,img,active) value('$name','$info',$price,'$img','$active')";
         $goodId = MPDO::insert($sql);
         return $goodId;    
     }
@@ -23,5 +23,6 @@ class M_Admin {
         $res = MPDO::delete($sql);
         return $res;    
     }
+    
 
 }

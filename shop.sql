@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 23 2022 г., 20:03
+-- Время создания: Янв 24 2022 г., 17:51
 -- Версия сервера: 5.6.47
 -- Версия PHP: 7.4.5
 
@@ -34,19 +34,6 @@ CREATE TABLE `cart` (
   `count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Дамп данных таблицы `cart`
---
-
-INSERT INTO `cart` (`id`, `user_id`, `good_id`, `count`) VALUES
-(71, 1, 2, 2),
-(83, 10, 3, 1),
-(84, 10, 1, 1),
-(90, 1, 6, 1),
-(91, 1, 7, 1),
-(92, 1, 27, 2),
-(93, 1, 5, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -67,7 +54,7 @@ CREATE TABLE `goods` (
 --
 
 INSERT INTO `goods` (`id`, `name`, `img`, `description`, `price`, `active`) VALUES
-(1, 'iphone', 'iphone.jpg', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc', 1000, 'Y'),
+(1, 'iphone', 'iphone.jpg', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc', 1001, 'Y'),
 (2, 'htc', 'htc.jpg', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc', 800, 'Y'),
 (3, 'samsung', 'samsung.jpg', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc', 900, 'Y'),
 (4, 'testGood4', 'iphone.jpg', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc', 100, 'Y'),
@@ -187,23 +174,13 @@ CREATE TABLE `goodsorder` (
 --
 
 INSERT INTO `goodsorder` (`id`, `order_id`, `good_id`, `count`) VALUES
-(10, 29, 1, 1),
-(25, 44, 2, 1),
-(26, 44, 1, 1),
-(27, 45, 3, 1),
-(28, 46, 3, 1),
-(44, 49, 2, 5),
-(45, 49, 1, 12),
-(46, 49, 3, 1),
-(47, 49, 4, 1),
-(48, 49, 5, 1),
-(49, 49, 24, 1),
-(50, 49, 26, 1),
-(51, 49, 10, 3),
-(52, 50, 2, 5),
-(53, 50, 1, 2),
-(54, 50, 6, 1),
-(55, 50, 7, 1);
+(56, 51, 2, 1),
+(57, 51, 3, 1),
+(58, 52, 6, 1),
+(59, 52, 7, 1),
+(60, 52, 27, 2),
+(61, 52, 5, 1),
+(62, 52, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -223,12 +200,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `date`, `user_id`, `status`) VALUES
-(29, '2021-12-14 18:05:13', 1, 'обработан'),
-(44, '2022-01-17 20:03:39', 8, 'оформлен'),
-(45, '2022-01-20 22:41:42', 10, 'оформлен'),
-(46, '2022-01-20 22:43:15', 10, 'оформлен'),
-(49, '2022-01-21 04:59:28', 8, 'оформлен'),
-(50, '2022-01-22 03:34:32', 11, 'оформлен');
+(51, '2022-01-24 17:39:47', 12, 'оформлен'),
+(52, '2022-01-24 17:50:48', 1, 'оформлен');
 
 -- --------------------------------------------------------
 
@@ -250,12 +223,9 @@ CREATE TABLE `rating` (
 --
 
 INSERT INTO `rating` (`id`, `rating`, `comment`, `good_id`, `username`, `active`) VALUES
-(1, 3, 'android лучше', 1, 'grey', 'Y'),
 (2, 10, 'Отличный звук!', 2, 'Ваня', 'Y'),
 (3, 5, 'Быстро сломался', 1, 'Анжела', 'Y'),
-(4, 1, 'Дизайн не очень', 3, 'Robert', 'N'),
-(5, 7, 'Сын доволен!', 3, 'Витя', 'N'),
-(7, 10, 'Огонь!!!', 1, 'Аня', 'N'),
+(4, 1, 'Дизайн не очень', 3, 'Robert', 'Y'),
 (10, 3, 'не прочный', 2, 'Аня', 'N'),
 (12, 8, 'Подходит для звонков', 2, 'Альбина', 'N');
 
@@ -269,18 +239,18 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `login` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pass` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `usergroup` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
+  `usergroup` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `active` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `pass`, `usergroup`) VALUES
-(1, 'admin', '3cf108a4e0a498347a5a75a792f2321221232f297a57a5a743894a0e4a801fc3', 'admin'),
-(8, 'user', 'ee32c060ac0caa70b04e25091bbc11eeee11cbb19052e40b07aac0ca060c23ee', 'user'),
-(10, 'test', '6f4b726238e4edac373d1264dcb6f890098f6bcd4621d373cade4e832627b4f6', 'user'),
-(11, '123', '07b432d25170b469b57095ca269bc202202cb962ac59075b964b07152d234b70', 'user');
+INSERT INTO `users` (`id`, `login`, `pass`, `usergroup`, `active`) VALUES
+(1, 'admin', '3cf108a4e0a498347a5a75a792f2321221232f297a57a5a743894a0e4a801fc3', 'admin', 'Y'),
+(8, 'user', 'ee32c060ac0caa70b04e25091bbc11eeee11cbb19052e40b07aac0ca060c23ee', 'user', 'Y'),
+(12, '123', '07b432d25170b469b57095ca269bc202202cb962ac59075b964b07152d234b70', 'user', 'N');
 
 --
 -- Индексы сохранённых таблиц
@@ -292,7 +262,7 @@ INSERT INTO `users` (`id`, `login`, `pass`, `usergroup`) VALUES
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`),
   ADD KEY `good_id` (`good_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `cart_ibfk_2` (`user_id`);
 
 --
 -- Индексы таблицы `goods`
@@ -311,7 +281,8 @@ ALTER TABLE `goodsorder`
 -- Индексы таблицы `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Индексы таблицы `rating`
@@ -335,37 +306,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT для таблицы `goods`
 --
 ALTER TABLE `goods`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT для таблицы `goodsorder`
 --
 ALTER TABLE `goodsorder`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT для таблицы `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -376,13 +347,19 @@ ALTER TABLE `users`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`good_id`) REFERENCES `goods` (`id`),
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `goodsorder`
 --
 ALTER TABLE `goodsorder`
   ADD CONSTRAINT `goodsorder_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `rating`

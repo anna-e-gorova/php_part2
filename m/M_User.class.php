@@ -1,7 +1,7 @@
 <?
 class M_User {
 	function auth($login, $pass){
-        $sql = "select id, usergroup from users where login='$login' and pass='$pass'";
+        $sql = "select id, usergroup from users where login='$login' and pass='$pass' and active='Y'";
         $data = MPDO::getRow($sql);
         if($data){
              $_SESSION['id_user'] = $data['id'];
@@ -30,7 +30,7 @@ class M_User {
         $sql = "SELECT * FROM users WHERE login = '$login'";
         $user = MPDO::getRow($sql);
         if (!$user) {
-            $sql = "INSERT INTO users VALUES (null, '$login', '$pass', 'user')";
+            $sql = "INSERT INTO users VALUES (null, '$login', '$pass', 'user', 'Y')";
             MPDO::insert($sql);
             return true;
         } else {
