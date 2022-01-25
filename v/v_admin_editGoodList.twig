@@ -1,0 +1,25 @@
+<h1>{{ text }}</h1>
+
+<table align="center" border="1" width="600">
+    <tr>
+        <th>Название товара</th>
+        <th>Действие</th>
+        <th>Активен</th>
+    </tr>
+
+    {% for good in goods %}
+        <tr id="{{ good.id }}">
+            <td>{{ good.name }}</td>
+            <td>
+                <a href="index.php?c=Admin&act=delGood&id={{ good.id }}"><button>Удалить товар</button></a>
+                <a href="index.php?c=Admin&act=editGood&id={{ good.id }}"><button>Редактировать товар</button></a>
+            </td>
+            <td><p id="active">{{ good.active }}</p>
+				<select id="selectStatus">
+					<option>Y</option>
+					<option>N</option>
+    			</select> <button onclick="changeStatusGood({{ good.id }})">Изменить</button>
+			</td>
+        </tr>
+    {% endfor %}
+</table>

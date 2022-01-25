@@ -1,0 +1,16 @@
+{% for good in goods %}
+    <div class="shopUnit" data-id="{{ good.id }}">
+        <a href="index.php?c=Product&act=open&id={{ good.id }}"><img src="images/goods/small/{{ good['img'] }}"/></a>
+        <a href="index.php?c=Product&act=open&id={{ good.id }}"><div class="shopUnitName">
+            {{ good.name }}
+        </div></a>
+        <a href="index.php?c=Product&act=open&id={{ good.id }}"><div class="shopUnitShortDescription">
+            {{ good.description | slice(0, 100) ~ '...' }}
+        </div></a>
+        <div class="shopUnitPrice">
+            Цена: {{ good.price }}
+        </div>
+        <a id="buttonA" onclick="addToCart({{ good.id }},{{ id_user }})" class="shopUnitMore" >Добавить в корзину</a>
+        <a href="index.php?c=Product&act=open&id={{ good.id }}" class="shopUnitMore">Подробнее</a>
+    </div>
+{% endfor %}

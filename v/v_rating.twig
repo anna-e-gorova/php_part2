@@ -1,0 +1,21 @@
+<form method="post">
+
+    <p>Ваше имя</p>
+    <input type="text" name="username" value="{{ user_name }}">
+
+    <input type="hidden" name="good" value="{{ good_id }}">
+
+    <p>Оценка</p>
+    <select name="rating">
+        {% for i in 10..1 %}
+        <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+    </select>
+
+    <p>Напишите отзыв</p>
+    <textarea name="comment" cols="30" rows="10"></textarea>
+    <br><br>
+    
+    <input type="submit" value="Сохранить">
+
+</form> 

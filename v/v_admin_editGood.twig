@@ -1,0 +1,17 @@
+<h1>{{ text }}</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <input name="id" type="hidden" value="{{ good.id }}">
+    <input name="action" type="hidden" value="edit">
+    <p>Название товара</p>
+    <input name="name" type="text" value="{{ good.name }}">
+    <p>Стоимость товара</p>
+    <input name="price" type="text" value="{{ good.price }}">
+    <p>Информация о товаре</p>
+    <textarea name="description" cols="30" rows="10" value="{{ good.description }}">{{ good.description }}</textarea>
+    <p>Изображение товара</p>
+    <img name="img" width="100" src="images/goods/big/{{ good.img }}" alt="">
+    <input name="oldImg" type="hidden" value="{{ good.img }}">
+    <input type="file" accept="image/jpeg" name="img"><br><br>
+    <input type="submit" value="Сохранить">
+</form>

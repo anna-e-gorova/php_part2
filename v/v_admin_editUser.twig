@@ -1,0 +1,27 @@
+<h1>{{ text }}</h1>
+<table border='1' width='800'>
+<tr>
+	<th>Логин</th>
+	<th>Группа</th>
+	<th>Активен</th>
+	<th>Удалить</th>
+</tr>
+	{% for user in users %}
+       <tr id="{{ user.id }}">
+       		<td>{{ user.login }}</td>
+       		<td><p id="group">{{ user.usergroup }}</p>
+				<select id="selectGroup">
+					<option>user</option>
+					<option>admin</option>
+    			</select> <button onclick="changeGroupUser({{ user.id }})">Изменить</button>
+			</td>
+			<td><p id="active">{{ user.active }}</p>
+				<select id="selectStatus">
+					<option>Y</option>
+					<option>N</option>
+    			</select> <button onclick="changeStatusUser({{ user.id }})">Изменить</button>
+			</td>
+       		<td><a href="index.php?c=Admin&act=editUser" onclick="delUser({{ user.id }})"><button>Удалить</button></a></td> 
+       </tr> 
+	{% endfor %}
+</table>

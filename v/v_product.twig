@@ -1,0 +1,29 @@
+<div id="openedProduct-img" data-id="{{ good.id }}">
+    <a id="buttonA" onclick="galary({{ good.id }})" href=""><img  src="images/goods/big/{{ good.img }}"></a>
+</div>
+<div id="openedProduct-price">
+    <h1>Цена: {{ good.price }}</h1>
+    </div>
+    <a id="buttonA" onclick="addToCart({{ good.id }},{{ id_user }})" class="button-primary shopViewMore" >Добавить в корзину</a>
+<div id="openedProduct-content">
+    <h1 id="openedProduct-name">
+        {{ good.name }}
+    </h1>
+    
+    <div id="openedProduct-description">
+        {{ good.description }}
+    </div>
+    
+    <p>Отзывы:</p>
+    <div id="ratings">
+        {% for comment in comments %}
+        <div id="ratingProduct" >
+            <p>Пользователь: {{ comment.username }}</p>
+            <p>Оценка: {{ comment.rating }}</p>
+            <p>Комментарий: {{ comment.comment }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="index.php?c=Rating&act=add&id={{ good.id }}" class="shopUnitMore">Оставить отзыв</a>
+<br>
+</div>
